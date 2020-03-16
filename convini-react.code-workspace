@@ -1,0 +1,29 @@
+  {
+    "folders": [
+      {
+        "path": ".",
+      }
+    ],
+    "settings": {
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+      },
+      "stylelint.autoFixOnSave": true,
+      "editor.renderWhitespace": "all",
+      "files.insertFinalNewline": true,
+      "editor.tabSize": 2,
+      "files.eol": "\n",
+      "eslint.validate": [
+        "javascript",
+        "javascriptreact"
+      ]
+    },
+    "extensions": {
+      "recommendations": [
+        "dsznajder.es7-react-js-snippets",
+        "coenraads.bracket-pair-colorizer",
+        "esbenp.prettier-vscode",
+      ]
+    },
+  }
