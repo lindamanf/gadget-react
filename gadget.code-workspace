@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "stylelint.autoFixOnSave": true,
+    "editor.renderWhitespace": "all",
+    "files.insertFinalNewline": true,
+    "editor.tabSize": 2,
+    "files.eol": "\n",
+    "scss.validate": false,
+    "scss.scannerExclude": [
+      "**/.git",
+      "**/node_modules",
+      "**/bower_components"
+    ],
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "eslint.validate": [
+      "typescript",
+      "typescriptreact",
+      "javascript",
+      "javascriptreact"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "clinyong.vscode-css-modules",
+      "mrmlnc.vscode-scss",
+      "msjsdiag.debugger-for-chrome",
+      "dbaeumer.vscode-eslint",
+      "hex-ci.stylelint-plus"
+    ]
+  },
+}

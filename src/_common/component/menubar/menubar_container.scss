@@ -1,0 +1,17 @@
+@import "../../util";
+
+.menu {
+  @include menubar;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  background-image: url("gadget-logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex-shrink: 0;
+  height: 60px;
+  min-width: 150px;
+}

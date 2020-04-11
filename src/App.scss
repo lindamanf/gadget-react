@@ -1,5 +1,7 @@
-.root {
-  font-size: 50px;
-  font-weight: bold;
-  text-align: center;
+@import "./_common/util";
+
+#main {
+  z-index: 0;
+  max-width: 935px;
+  margin: 0 auto;
 }

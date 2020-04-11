@@ -3,9 +3,8 @@ import "./menubar_container.scss";
 
 function MenubarContainer() {
   return (
-    <div>
-      <div>新着</div>
-      <div>設定</div>
+    <div className="menu">
+      <div className="logo" />
     </div>
   );
 }

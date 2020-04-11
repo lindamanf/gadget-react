@@ -1,0 +1,452 @@
+@import "./trigonometric";
+
+// セレクタの多重生成を防ぐためmixinやconstなどのみここに置いてください
+
+// ---- フォントサイズ ----
+$normalFontSize: 14px !default;
+$fontSizeDiff: 2px !default;
+$s1FontSize: ($normalFontSize - $fontSizeDiff * 1);
+$s2FontSize: ($normalFontSize - $fontSizeDiff * 2);
+$l1FontSize: ($normalFontSize + $fontSizeDiff * 1);
+$l2FontSize: ($normalFontSize + $fontSizeDiff * 2);
+$l3FontSize: ($normalFontSize + $fontSizeDiff * 3);
+$l5FontSize: ($normalFontSize + $fontSizeDiff * 5);
+$l9FontSize: ($normalFontSize + $fontSizeDiff * 9);
+$l11FontSize: ($normalFontSize + $fontSizeDiff * 11);
+$l13FontSize: ($normalFontSize + $fontSizeDiff * 13);
+// ---- フォントサイズ ここまで ----
+
+// ---- カラー系 ----
+$linkColor: hsl(240, 100, 46) !default;
+$linkActiveColor: hsl(0, 100, 50) !default;
+$focusColor: hsl(217, 98, 64) !default;
+$focusBorderColor: $focusColor !default;
+$normalFontColor: hsl(0, 0, 18) !default;
+$fontRed: hsl(7, 80, 56) !default;
+$fontBlue: hsl(198, 99, 51) !default;
+$disabledColor: hsl(0, 0, 95) !default;
+$overlayBGColor: rgba(0, 0, 0, 0.7) !default;
+$loadingBGColor: transparent !default;
+$borderAOpacity: 0.1 !default;
+$borderBOpacity: 0.2 !default;
+$borderCOpacity: 0.05 !default;
+$borderAColor: rgba(0, 0, 0, $borderAOpacity);
+$borderBColor: rgba(0, 0, 0, $borderBOpacity);
+$borderCColor: rgba(0, 0, 0, $borderCOpacity);
+$borderWAColor: rgba(255, 255, 255, $borderAOpacity); //黒い背景の時使う薄白の線
+$borderWBColor: rgba(255, 255, 255, $borderBOpacity);
+$borderWCColor: rgba(255, 255, 255, $borderCOpacity);
+$shadowAColor: rgba(0, 0, 0, 0.15) !default;
+// ---- サイト固有色系 ----
+$themeHue: 199 !default;
+$mainThemeColor: hsl($themeHue, 99, 51) !default;
+$weakColorA: hsl($themeHue, 98, 76) !default; // 薄め
+$weakColorB: darken($weakColorA, 10) !default; // Aよりは濃いめ
+$strongColorA: hsl($themeHue, 85, 51) !default; // 濃い目
+$strongColorB: darken($strongColorA, 10) !default; // 最も濃い
+// ---- コンポーネント用の色 ----
+$checkboxColor: $mainThemeColor !default;
+$selectFocusColor: hsl(210, 100, 40) !default;
+$buttonRed: hsl(7, 85, 66) !default;
+$buttonBlue: $fontBlue !default;
+$buttonGreen: hsl(97, 61, 40) !default;
+$buttonLightGray: hsl(200, 30, 90) !default;
+// ---- カラー系 ここまで ----
+// ---- 汎用 ----
+$lineHeight: 1.5 !default;
+$borderA: 1px solid $borderAColor;
+$borderB: 1px solid $borderBColor;
+$borderC: 1px solid $borderCColor;
+$borderWA: 1px solid $borderWAColor;
+$borderWB: 1px solid $borderWBColor;
+$borderWC: 1px solid $borderWCColor;
+$normalMargin: 8px !default;
+$halfLargeMargin: $normalMargin * 1.5;
+$mediumMargin: $normalMargin * 2;
+$largeMargin: $normalMargin * 3;
+$x4Margin: $normalMargin * 4;
+$indentMargin: $x4Margin;
+$shortMargin: $normalMargin / 2;
+$minimumMargin: $normalMargin / 4;
+$shadowA: 1px 1px 2px 0 $shadowAColor;
+$inputYPadding: ($normalMargin / 4 * 3);
+$inputHeight: (
+  ($normalFontSize * $lineHeight) + ($inputYPadding * 2) + 2
+); // %inputの縦方向paddingサイズ分とボーダー分のサイズを足している
+$minClickableSize: 36px;
+$iconSizeL: $minClickableSize;
+$iconSizeM: $iconSizeL / 3 * 2;
+$iconSizeS: $iconSizeM / 3 * 2;
+$inputRadius: $normalMargin !default;
+// ---- 汎用指定 ここまで ----
+
+// ---- mixin挙動変更系 ----
+$clickableShadow: $shadowA !default;
+$clickableTranslateX: 2px !default;
+$clickableTranslateY: 2px !default;
+// ---- 挙動変更系 ここまで ----
+
+// ---- 画面サイズ系 ----
+$contentSize: 613px;
+$contentMinSize: 360px; // 一応このサイズよりは広めにとる
+$contentMaxSize: (
+  $contentMinSize * 2 + 200px
+); // デスクトップで見た時あまり横に広すぎると間が抜けてるので、とりあえずこのサイズまでを想定
+$minColumnSize: $contentMinSize - ($normalMargin * 4);
+$minTwoColumnSize: ($contentMinSize / 2) - ($normalMargin * 4);
+// ---- 画面サイズ系 ここまで ----
+
+// ---- TableComponent設定 ----
+$tableComponentLabelColor: hsl(0, 0, 70) !default;
+// ---- TableComponent設定 ここまで ----
+
+// ---- 他で参照するコンポーネントサイズ ----
+$iconButtonSize: 2em;
+$menubarMargin: ($normalMargin * 1.5);
+$menubarSize: (
+  ($normalFontSize * 2) + ($menubarMargin * 2)
+); // 前者はボタンサイズを想定したもの、後者は上下マージン
+$menubarIconAreaSize: ($menubarSize - ($shortMargin * 2));
+$fixedFooterHeight: ($inputHeight + ($normalMargin * 2) * 2);
+$loadingDotWidth: 12px;
+// ---- 他で参照するコンポーネントサイズ ここまで ----
+
+// ---- z-index ----
+$selectInputSelectAreaComponentZIndex: 1 !default;
+$overlayZIndex: 3 !default;
+$calendarAreaComponentZIndex: 1 !default;
+// ---- z-index ここまで ----
+
+// ---- mixin系
+@mixin fontN {
+  font-size: $normalFontSize;
+  font-weight: normal;
+}
+
+@mixin fontNB {
+  font-size: $normalFontSize;
+  font-weight: bold;
+}
+
+@mixin fontS1 {
+  font-size: $s1FontSize;
+  font-weight: normal;
+}
+
+@mixin fontS1B {
+  font-size: $s1FontSize;
+  font-weight: bold;
+}
+
+@mixin fontS2 {
+  font-size: $s2FontSize;
+  font-weight: normal;
+}
+
+@mixin fontS2B {
+  font-size: $s2FontSize;
+  font-weight: bold;
+}
+
+@mixin fontL1 {
+  font-size: $l1FontSize;
+  font-weight: normal;
+}
+
+@mixin fontL1B {
+  font-size: $l1FontSize;
+  font-weight: bold;
+}
+
+@mixin fontL2 {
+  font-size: $l2FontSize;
+  font-weight: normal;
+}
+
+@mixin fontL2B {
+  font-size: $l2FontSize;
+  font-weight: bold;
+}
+
+@mixin fontL3 {
+  font-size: $l3FontSize;
+  font-weight: normal;
+}
+
+@mixin fontL3B {
+  font-size: $l3FontSize;
+  font-weight: bold;
+}
+
+@mixin fontL5 {
+  font-size: $l5FontSize;
+  font-weight: normal;
+}
+
+@mixin fontL5B {
+  font-size: $l5FontSize;
+  font-weight: bold;
+}
+
+@mixin fontL9 {
+  font-size: $l9FontSize;
+  font-weight: normal;
+}
+
+@mixin fontL9B {
+  font-size: $l9FontSize;
+  font-weight: bold;
+}
+
+@mixin fontL11 {
+  font-size: $l11FontSize;
+  font-weight: normal;
+}
+
+@mixin fontL11B {
+  font-size: $l11FontSize;
+  font-weight: bold;
+}
+
+/** css-modulesで空のrulesetでもクラス名を使用できるようにするためのmixin */
+@mixin empty {
+  /*! keep */
+}
+
+@mixin focus {
+  border: 1px solid $focusBorderColor;
+  box-shadow: 0 0 5px $focusColor;
+}
+
+@mixin disabled($color: $disabledColor) {
+  background-color: mix($color, $disabledColor, 50);
+  pointer-events: none;
+}
+
+@mixin required {
+  &::after {
+    @include fontS2;
+
+    color: $fontRed;
+    content: "※";
+    margin-left: $minimumMargin;
+  }
+}
+
+/** 縦並び用 */
+@mixin verticalOrder($margin: $normalMargin) {
+  > :nth-child(n + 2) {
+    margin-top: $margin;
+  }
+}
+
+/** 横並び用 */
+@mixin horizontalOrder(
+  $margin: $normalMargin,
+  $display: flex,
+  $align-items: center
+) {
+  align-items: $align-items;
+  display: $display;
+
+  > :nth-child(n + 2) {
+    margin-left: $margin;
+  }
+}
+
+/** 省略表示領域のスタイル */
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin icon($size, $margin, $direction: horizontal) {
+  position: relative;
+
+  @if $direction == horizontal {
+    padding-left: $size + $margin;
+  } @else {
+    padding-top: $size + $margin;
+  }
+
+  &::before {
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: 0;
+    content: "";
+    height: $size;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $size;
+
+    @if $direction == horizontal {
+      margin: auto 0;
+    } @else {
+      margin: 0 auto;
+    }
+  }
+}
+
+/** ボタン系の、クリック可能な要素につける。 */
+@mixin clickable(
+  $border: $borderA,
+  $activeTranslate: true,
+  $backgroundColor: white,
+  $boxShadow: $clickableShadow
+) {
+  background-color: $backgroundColor;
+  border: $border;
+  box-shadow: $boxShadow;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    @if nth($border, 3) != transparent {
+      border-color: opacify(nth($border, 3), 0.1);
+    }
+  }
+
+  @if $activeTranslate {
+    &:active {
+      box-shadow: none;
+      transform: translateX($clickableTranslateX)
+        translateY($clickableTranslateY);
+    }
+  }
+}
+
+// ---- 入力標準 ----
+
+%input {
+  background-color: white;
+  border: $borderB;
+  border-radius: $inputRadius;
+  color: inherit;
+  display: block;
+  font: inherit;
+  outline: none;
+  padding: $inputYPadding $normalMargin;
+
+  &:focus {
+    @include focus;
+  }
+
+  &[disabled] {
+    @include disabled;
+  }
+}
+
+/** selectやbuttonなど、1行入力とほぼ同じ見た目を取る場合に使うスタイル */
+%likeInput {
+  @extend %input;
+
+  align-items: center;
+  display: flex;
+  height: $inputHeight;
+  min-height: $inputHeight;
+}
+
+%overlay {
+  align-items: center;
+  background-color: $overlayBGColor;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: $overlayZIndex;
+}
+
+// ---- カラー系 ----
+$gadgetBlue: hsl(29, 32, 136);
+$darkBlue: hsl(193, 85, 39);
+$colorGray: hsl(250, 250, 250);
+$darkGray: hsl(198, 8, 45);
+$alertRed: hsl(7, 80, 56);
+$chatAgentMessageBGColor: hsl(0, 0, 95);
+$whiteColor: hsl(255, 255, 255);
+$previewColor: hsl(357, 77, 60);
+$favoriteColor: hsl(40, 100, 50);
+$notInterestColor: hsl(0, 0, 50);
+$tagLocationColor: hsl(167, 63, 44);
+$tagFacilityColor: hsl(345, 100, 60);
+$tagMoneyColor: hsl(45, 54, 52);
+$isNewColor: hsl(37, 91, 55);
+$noRateColor: $alertRed;
+$realEstateTableBoxShadow: 0 0 2px $shadowAColor;
+// ---- カラー系 ここまで ----
+
+// ---- 他で参照するコンポーネントサイズ ----
+$realEstateValueAreaSize: 72px;
+$settingFooterButtonSize: 48px;
+$settingFooterButtonAreaPadding: $normalMargin * 2;
+$settingFooterButtonAreaHeight: $settingFooterButtonSize +
+  $settingFooterButtonAreaPadding * 2;
+$chatMessageInputBorderRadius: $shortMargin;
+$balloonIconAndMetaSize: $iconSizeL;
+$chatBoundaryWidth: $contentMinSize * 2;
+$chatRealEstateListWidth: $contentMinSize + 100px;
+$showRealEstateListWidth: $chatRealEstateListWidth + $chatBoundaryWidth; // チャット画面の横に提案物件を表示する境界値
+$chatSettingWidth: $minColumnSize;
+$alwaysShowChatSettingWidth: $showRealEstateListWidth + $chatSettingWidth; // チャット画面の横に常に設定を表示する境界値
+$showChatSettingWidth: $alwaysShowChatSettingWidth - $chatRealEstateListWidth; // チャット画面横の設定を提案物件と切り替えて出す境界値
+// ---- 他で参照するコンポーネントサイズ ここまで ----
+
+// ---- z-index ----
+$overPageComponentZIndex: 2;
+// ---- z-index ここまで ----
+
+// ---- mixin系 ----
+// ---- mixin系 ここまで ----
+
+@mixin menubar() {
+  @include horizontalOrder;
+  border-left: $borderB;
+  border-right: $borderB;
+  border-bottom: $borderB;
+  height: $menubarSize;
+  position: sticky;
+  width: $contentSize;
+  z-index: $overPageComponentZIndex;
+  padding-left: $halfLargeMargin;
+  padding-right: $halfLargeMargin;
+}
+
+%badge {
+  position: relative;
+
+  &::after {
+    background-color: $alertRed;
+    border-radius: 50%;
+    content: "";
+    min-height: $normalMargin;
+    min-width: $normalMargin;
+    padding: $minimumMargin;
+    position: absolute;
+    right: $normalMargin;
+  }
+}
+
+%unReadBadge {
+  @include fontS2;
+
+  background-color: $alertRed;
+  border-radius: 50%;
+  line-height: 1;
+  min-width: calc(1em + #{$minimumMargin * 2});
+  padding: $minimumMargin;
+  text-align: center;
+  top: 0;
+}
+
+%card {
+  @include clickable;
+
+  border-radius: $shortMargin;
+  padding: $normalMargin;
+}
