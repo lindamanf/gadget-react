@@ -1,0 +1,75 @@
+@import "../../_common/util";
+
+.card {
+  @include verticalOrder;
+  border-bottom: $borderA;
+  padding: $halfLargeMargin $mediumMargin;
+}
+
+.card_main {
+  @include horizontalOrder($halfLargeMargin, flex, start);
+}
+
+.card_right {
+  padding-top: $largeMargin;
+  flex-shrink: 0;
+}
+
+.card_image {
+  min-width: 100px;
+  height: 100px;
+  display: block;
+  border: $borderB;
+  border-radius: $halfLargeMargin;
+}
+
+.card_left {
+  @include verticalOrder($halfLargeMargin);
+  flex-grow: 1;
+}
+
+.card_title {
+}
+
+.card_name {
+  @include fontL1B;
+}
+
+.card_desc {
+  color: $darkGray;
+  text-decoration: none;
+}
+
+.card_tag {
+  @include fontN;
+  padding: $shortMargin;
+  margin-right: $shortMargin;
+  margin-bottom: $shortMargin;
+  border: $borderA;
+  border-radius: $normalMargin;
+  display: inline-block;
+}
+
+.card_action {
+  @include horizontalOrder;
+  justify-content: space-evenly;
+  padding-left: 70px;
+}
+
+.card_icon_wraper {
+  width: 80px;
+}
+
+.card_icon {
+  color: $darkGray;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.like {
+  color: $fontRed;
+}
+
+.bookmark {
+  color: $buttonGreen;
+}

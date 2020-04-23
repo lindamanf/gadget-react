@@ -1,0 +1,9 @@
+@import "../_common/util";
+
+.root {
+  @include horizontalOrder(0, flex, start);
+  z-index: 0;
+  // max-width: 1265px;
+  max-width: $contentSize;
+  margin: 0 auto;
+}

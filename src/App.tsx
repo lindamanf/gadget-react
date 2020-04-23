@@ -1,24 +1,43 @@
-import React from "react";
+import React, { createContext, useReducer, Dispatch } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SettingPage from "./setting/setting_page";
-import FindPage from "./find/find_page";
-import MenubarContainer from "./_common/component/menubar/menubar_container";
+import ProductPage from "./find/product_page";
 import "./App.scss";
+import {
+  ProductAction,
+  ProductReducer,
+  InitialProductState,
+} from "src/find/product_reducer";
 
-function App() {
+export const Context = createContext({
+  find: {
+    state: InitialProductState,
+    dispatch: (() => true) as Dispatch<ProductAction>,
+  },
+});
+
+const App: React.FC = () => {
+  const [findState, findDispatch] = useReducer(
+    ProductReducer,
+    InitialProductState
+  );
+
   return (
     <>
       <div id="main">
-        <MenubarContainer />
-        <Router>
-          <Switch>
-            <Route path="/" component={FindPage} exact />
-            <Route path="/setting" component={SettingPage} exact />
-          </Switch>
-        </Router>
+        <Context.Provider
+          value={{ find: { state: findState, dispatch: findDispatch } }}
+        >
+          <Router>
+            <Switch>
+              <Route path="/" component={ProductPage} exact />
+              <Route path="/setting" component={SettingPage} exact />
+            </Switch>
+          </Router>
+        </Context.Provider>
       </div>
     </>
   );
-}
+};
 
 export default App;

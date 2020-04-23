@@ -1,0 +1,11 @@
+@import "../../util";
+
+.nav {
+  width: 275px;
+}
+
+@media screen and (max-width: $contentMinSize * 3) {
+  .nav {
+    display: none;
+  }
+}

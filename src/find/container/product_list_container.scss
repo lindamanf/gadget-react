@@ -1,0 +1,9 @@
+@import "../../_common/util";
+
+.list {
+  border-left: $borderA;
+  border-right: $borderA;
+  width: $contentSize * 2 / 3;
+  min-height: 2000px;
+  padding-top: $menubarSize;
+}

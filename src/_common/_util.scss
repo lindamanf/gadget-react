@@ -37,6 +37,7 @@ $borderWAColor: rgba(255, 255, 255, $borderAOpacity); //黒い背景の時使う
 $borderWBColor: rgba(255, 255, 255, $borderBOpacity);
 $borderWCColor: rgba(255, 255, 255, $borderCOpacity);
 $shadowAColor: rgba(0, 0, 0, 0.15) !default;
+$gadgetColor: rgba(29, 32, 136);
 // ---- サイト固有色系 ----
 $themeHue: 199 !default;
 $mainThemeColor: hsl($themeHue, 99, 51) !default;
@@ -87,7 +88,7 @@ $clickableTranslateY: 2px !default;
 // ---- 挙動変更系 ここまで ----
 
 // ---- 画面サイズ系 ----
-$contentSize: 613px;
+$contentSize: 935px;
 $contentMinSize: 360px; // 一応このサイズよりは広めにとる
 $contentMaxSize: (
   $contentMinSize * 2 + 200px
@@ -363,7 +364,6 @@ $calendarAreaComponentZIndex: 1 !default;
 }
 
 // ---- カラー系 ----
-$gadgetBlue: hsl(29, 32, 136);
 $darkBlue: hsl(193, 85, 39);
 $colorGray: hsl(250, 250, 250);
 $darkGray: hsl(198, 8, 45);
@@ -405,16 +405,14 @@ $overPageComponentZIndex: 2;
 // ---- mixin系 ここまで ----
 
 @mixin menubar() {
-  @include horizontalOrder;
-  border-left: $borderB;
-  border-right: $borderB;
-  border-bottom: $borderB;
+  border-left: $borderA;
+  border-right: $borderA;
+  border-bottom: $borderA;
   height: $menubarSize;
-  position: sticky;
-  width: $contentSize;
+  position: fixed;
+  width: 100%;
   z-index: $overPageComponentZIndex;
-  padding-left: $halfLargeMargin;
-  padding-right: $halfLargeMargin;
+  background-color: $whiteColor;
 }
 
 %badge {

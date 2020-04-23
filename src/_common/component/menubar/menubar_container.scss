@@ -6,12 +6,48 @@
   align-items: center;
 }
 
+.menu_content {
+  @include horizontalOrder;
+  width: $contentSize;
+  margin: 0 auto;
+  padding-left: $normalMargin;
+  padding-right: $normalMargin;
+}
+
+.menu_main {
+  @include horizontalOrder;
+  width: $contentSize * 2 / 3;
+}
+
 .logo {
   background-image: url("gadget-logo.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   flex-shrink: 0;
-  height: 60px;
+  height: 40px;
   min-width: 150px;
+}
+
+.menu_user {
+  @include horizontalOrder;
+}
+
+.menu_login {
+  @include fontNB;
+  border: 2px solid $gadgetColor;
+  border-radius: $halfLargeMargin;
+  color: $gadgetColor;
+  padding: 0 $normalMargin;
+  cursor: pointer;
+}
+
+.menu_register {
+  @include fontNB;
+  border: 2px solid $gadgetColor;
+  border-radius: $halfLargeMargin;
+  color: $whiteColor;
+  background-color: $gadgetColor;
+  padding: 0 $normalMargin;
+  cursor: pointer;
 }
